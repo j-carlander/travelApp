@@ -1,18 +1,29 @@
-$(".traffic-table thead").append(`
-    <tr>
-        <th>Tåg/buss</th>
-        <th>Från</th>
-        <th>Avgång</th>
-        <th>Till</th>
-        <th>Ankommer</th>
-        <th>Info</th>
-    </tr>
+let renderTrainTable;
+
+if (window.matchMedia("(max-width: 600px)").matches) {
+  // The viewport is less than 440 pixels wide
+  console.log("This is a mobile device.");
+} else {
+  $("main").html(`
+    <table class="traffic-table table table-striped mt-3">
+      <thead class="table-light">
+        <tr>
+            <th>Tåg/buss</th>
+            <th>Från</th>
+            <th>Avgång</th>
+            <th>Till</th>
+            <th>Ankommer</th>
+            <th>Info</th>
+        </tr>
+        </thead>
+      <tbody></tbody>
+  </table>
 `);
 
-// renders the input data to an HTML element
-function renderTrainTable(data) {
-  data.forEach((trainObject) => {
-    let element = $(`
+  // renders the input data to an HTML element
+  renderTrainTable = function (data) {
+    data.forEach((trainObject) => {
+      let element = $(`
     <tr>
         <td>${trainObject.name}</td>
         <td>${trainObject.origin}</td>
@@ -30,15 +41,15 @@ function renderTrainTable(data) {
         </td>
     </tr>
     `);
-    if (trainObject.notes.Note) {
+      // push all notes in to the content-list
       trainObject.notes.Note.forEach((note) => {
         element.find(".content-list").append(`<li>${note.value}</li>`);
       });
-    }
 
-    $(".traffic-table tbody").append(element);
-  });
-}
+      $("main tbody").append(element);
+    });
+  };
+} //end mobile-else
 
 $(".city-input-field").on("keydown", (event) => {
   if (event.key == "Enter") {
@@ -50,5 +61,6 @@ $(".city-input-field").on("keydown", (event) => {
       $("#destinationField")[0].value, // Destination cityname
       renderTrainTable //callback
     );
+    console.log("searched");
   }
 });

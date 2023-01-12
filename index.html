@@ -25,27 +25,30 @@
     <div class="page-wrapper">
       <header>
         <h2>Hur kommer jag dit?</h2>
-        <div class="input-group ms-2">
-          <label for="originField" class="me-1">Från </label
-          ><input
-            type="text"
-            name="originField"
-            id="originField"
-            class="city-input-field" />
-        </div>
-        <div class="input-group ms-2">
-          <label for="destinationField" class="me-1">Till </label
-          ><input
-            type="text"
-            name="destinationField"
-            id="destinationField"
-            class="city-input-field" />
-        </div>
+
+        <form class="search-fields">
+          <div class="input-group ms-2">
+            <label for="originField" class="me-1">Från </label
+            ><input
+              type="text"
+              name="originField"
+              id="originField"
+              class="city-input-field"
+              value="stockholm" />
+          </div>
+          <div class="input-group ms-2">
+            <label for="destinationField" class="me-1">Till </label
+            ><input
+              type="text"
+              name="destinationField"
+              id="destinationField"
+              class="city-input-field"
+              value="göteborg" />
+          </div>
+          <!-- <button type="submit">Sök</button> -->
+        </form>
       </header>
-      <table class="traffic-table table table-striped mt-3">
-        <thead class="table-light"></thead>
-        <tbody></tbody>
-      </table>
+      <main></main>
     </div>
   </body>
 </html>
