@@ -1,0 +1,15 @@
+.page-wrapper {
+  margin: 3em auto;
+  max-width: 600px;
+}
+
+header {
+  margin: 0 auto;
+  width: max-content;
+}
+
+.input-group {
+  width: 30ch;
+  display: flex;
+  justify-content: space-between;
+}
