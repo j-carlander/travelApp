@@ -24,7 +24,7 @@ function searchTrain(origin, destination, callback) {
       destinationId:
         destinationData[0].stopLocationOrCoordLocation[0].StopLocation.extId,
     };
-
+    console.log(travel);
     findTrain(travel, (data) => {
       let trainData = [];
       data.Trip.forEach((train) => {
@@ -34,10 +34,13 @@ function searchTrain(origin, destination, callback) {
         trainObject.dest = train.Destination.name;
         trainObject.arrTime = train.Destination.time;
         trainObject.name = train.LegList.Leg[0].Product[0].name;
-
+        trainObject.notes = train.LegList.Leg[0].Notes
+          ? train.LegList.Leg[0].Notes
+          : { Note: [{ value: "no services listed" }] };
+        console.log(trainObject);
         trainData.push(trainObject);
       });
-      console.log(trainData);
+      // console.log(trainData[0].notes.Note);
 
       callback(trainData);
     });
