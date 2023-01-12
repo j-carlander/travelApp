@@ -9,6 +9,7 @@ $(".traffic-table thead").append(`
     </tr>
 `);
 
+// renders the input data to an HTML element
 function renderTrainTable(data) {
   data.forEach((trainObject) => {
     let element = $(`
@@ -45,9 +46,9 @@ $(".city-input-field").on("keydown", (event) => {
     if ($("#destinationField")[0].value == "")
       return $("#destinationField").focus();
     searchTrain(
-      $("#originField")[0].value,
-      $("#destinationField")[0].value,
-      renderTrainTable
+      $("#originField")[0].value, // Origin cityname
+      $("#destinationField")[0].value, // Destination cityname
+      renderTrainTable //callback
     );
   }
 });
