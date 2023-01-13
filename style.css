@@ -1,3 +1,9 @@
+/* *,
+*::before,
+*::after {
+	box-sizing: inherit;
+} */
+
 .page-wrapper {
   margin: 3em auto;
   max-width: 600px;
@@ -45,4 +51,68 @@ header {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* Mobile - details styling */
+
+details {
+  font-size: 1rem;
+  margin: 1em auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 90%;
+  background: #ffffff;
+  border-radius: 8px;
+  position: relative;
+}
+.sub-details {
+  width: 100%;
+}
+.summary-title {
+  user-select: none;
+}
+
+.summary-title:hover {
+  cursor: pointer;
+}
+
+.summary-content {
+  border-top: 1px solid #e2e8f0;
+  cursor: default;
+  padding: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+summary {
+  list-style: none;
+  padding: 1em;
+}
+summary:focus {
+  outline: none;
+}
+
+summary:hover .summary-chevron-up svg {
+  opacity: 1;
+}
+
+.summary-chevron-up svg {
+  opacity: 0.5;
+}
+
+.summary-chevron-up,
+.summary-chevron-down {
+  pointer-events: none;
+  position: absolute;
+  top: 0.75em;
+  right: 1em;
+  background: #ffffff;
+}
+.summary-chevron-up svg,
+.summary-chevron-down svg {
+  display: block;
+}
+
+summary::-webkit-details-marker {
+  display: none;
 }
