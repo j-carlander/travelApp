@@ -33,23 +33,6 @@ class RouteObject {
     return el;
   }
 
-  renderTable() {
-    let el = $(`
-    <tr>
-        <td class="leg-list">${this.legList.Leg[0].name}</td>
-        <td>${this.origin}</td>
-        <td>${this.departTime}</td>
-        <td>${this.dest}</td>
-        <td>${this.arrTime}</td>
-        <td>
-          c
-        </td>
-    </tr>
-    `);
-
-    return el;
-  }
-
   _renderNotes(el, leg) {
     // let el = [];
     leg.Notes
