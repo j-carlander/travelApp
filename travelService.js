@@ -40,7 +40,8 @@ function searchTrain(origin, destination, callback) {
           train.Origin.time,
           train.Destination.name,
           train.Destination.time,
-          train.LegList
+          train.LegList,
+          train.duration
         );
         trainData.push(trainObject);
       });

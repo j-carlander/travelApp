@@ -1,10 +1,11 @@
 class RouteObject {
-  constructor(origin, departTime, dest, arrTime, legList) {
+  constructor(origin, departTime, dest, arrTime, legList, totalDuration) {
     this.origin = origin;
-    this.departTime = departTime;
+    this.departTime = departTime.slice(0, -3);
     this.dest = dest;
-    this.arrTime = arrTime;
+    this.arrTime = arrTime.slice(0, -3);
     this.legList = legList;
+    this.totalDuration = totalDuration;
   }
 
   render() {
@@ -12,7 +13,11 @@ class RouteObject {
     <details class="main-details">
       <summary>
         <div class="summary-title">
-          <h3>${this.departTime} &#10140; ${this.arrTime}</h3>
+          <h3>${this.departTime} &#10140; ${this.arrTime} 
+          <span style="float:right; margin-right: 25px;font-size:smaller;font-weight:lighter;">${this._reformatDuration(
+            this.totalDuration
+          )}</span>
+          </h3>
           <p>${this.origin} &#10140; ${this.dest}</p>
           <p class="leg-list" ></p>
         </div>
@@ -52,14 +57,15 @@ class RouteObject {
       let legElement = $(` 
       <div>
       <p class="leg-origin">
-        <span class="origin-depart">${
-          leg.Origin.time
-        }</span> <span class="origin-name">${leg.Origin.name}</span>
+        <span class="origin-depart">${leg.Origin.time.slice(0, -3)}</span> 
+        <span class="origin-name">${leg.Origin.name}</span> 
+        
       </p>
+      <span class="duration">${this._reformatDuration(leg.duration)}</span>
       <p class="inline"><span class="arrow">&#8675;</span> ${this._handleLegName(
         leg.name
-      )}</p>
-
+      )} </p>
+      
       <div class="leg-list-info dropdown inline">
         <p>&#8505;</p>
         <div class="dropdown-content">
@@ -69,7 +75,10 @@ class RouteObject {
       </div>
 
       <p class="leg-destination">
-        <span class="destination-arrival">${leg.Destination.time}</span
+        <span class="destination-arrival">${leg.Destination.time.slice(
+          0,
+          -3
+        )}</span
         > <span class="destination-name">${leg.Destination.name}</span>
       </p>
     </div>
@@ -88,5 +97,17 @@ class RouteObject {
       legName = legName.replace("Länstrafik -", "");
     }
     return legName;
+  }
+
+  _reformatDuration(duration) {
+    duration = duration.replace(/PT(\d+)H(\d+)M/, "$1:$2 tim");
+    duration = duration.replace(/PT(\d+)M/, "$1 min");
+    // let indexOfT = duration.indexOf("T");
+    // console.log("index of T: " + indexOfT);
+    // duration = duration.slice(indexOfT + 1);
+    // let indexOfH = duration.indexOf("H");
+    // let hours = indexOfH ? duration.slice(0, indexOfH) : 0;
+    console.log(duration);
+    return duration;
   }
 }

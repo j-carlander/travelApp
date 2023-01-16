@@ -140,3 +140,7 @@ summary::-webkit-details-marker {
 .leg-name:not(:first-child)::before {
   content: " ❯ ";
 }
+
+.summary-content > div:not(:first-child)::before {
+  content: "----";
+}
