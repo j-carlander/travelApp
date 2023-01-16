@@ -1,10 +1,10 @@
-let renderTrainTable = function (data) {
+function renderTrainTable(data) {
   data.forEach((trainObject) => {
     let element = $(trainObject.render());
 
     $("main").append(element);
   });
-};
+}
 
 // eventhandler for searching
 
