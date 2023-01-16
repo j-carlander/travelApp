@@ -65,7 +65,7 @@ class RouteObject {
     // let legs = el.find(".leg-list");
     this.legList.Leg.forEach((leg) => {
       el.find(".leg-list").append(`
-      <span>${this._handleLegName(leg.name)}</span>`);
+      <span class="leg-name">${this._handleLegName(leg.name)}</span>`);
       let legElement = $(` 
       <div>
       <p class="leg-origin">

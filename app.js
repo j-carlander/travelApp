@@ -6,9 +6,7 @@ if (window.matchMedia("(max-width: 600px)").matches) {
   console.log("This is a mobile device.");
 
   renderTrainTable = function (data) {
-    console.log(data);
     data.forEach((trainObject) => {
-      console.log(trainObject);
       let element = $(trainObject.render());
 
       $("main").append(element);
@@ -19,9 +17,7 @@ if (window.matchMedia("(max-width: 600px)").matches) {
 
   // renders the input data to an HTML element
   renderTrainTable = function (data) {
-    data.forEach((trainObject) => {
-      let element = $(trainObject.renderTable());
-      $("main").html(`
+    $("main").html(`
       <table class="traffic-table table table-striped mt-3">
         <thead class="table-light">
           <tr>
@@ -36,6 +32,9 @@ if (window.matchMedia("(max-width: 600px)").matches) {
         <tbody></tbody>
     </table>
   `);
+    data.forEach((trainObject) => {
+      let element = $(trainObject.renderTable());
+
       $("main tbody").append(element);
     });
   };

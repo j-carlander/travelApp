@@ -136,3 +136,7 @@ summary::-webkit-details-marker {
 .inline {
   display: inline-block;
 }
+
+.leg-name:not(:first-child)::before {
+  content: " ❯ ";
+}
