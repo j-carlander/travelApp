@@ -35,16 +35,13 @@ function searchTrain(origin, destination, callback) {
       // and handle the result
       let trainData = [];
       data.Trip.forEach((train) => {
-        let trainObject = {};
-        trainObject.origin = train.Origin.name;
-        trainObject.departTime = train.Origin.time;
-        trainObject.dest = train.Destination.name;
-        trainObject.arrTime = train.Destination.time;
-        trainObject.name = train.LegList.Leg[0].Product[0].name;
-        trainObject.notes = train.LegList.Leg[0].Notes
-          ? train.LegList.Leg[0].Notes
-          : { Note: [{ value: "no services listed" }] };
-
+        let trainObject = new RouteObject(
+          train.Origin.name,
+          train.Origin.time,
+          train.Destination.name,
+          train.Destination.time,
+          train.LegList
+        );
         trainData.push(trainObject);
       });
 
